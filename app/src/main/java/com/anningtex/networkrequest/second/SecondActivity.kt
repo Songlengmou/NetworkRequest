@@ -32,6 +32,8 @@ class SecondActivity : AppCompatActivity() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: MessageEvent) {
         Log.e("TAG", "onMessageEvent: " + event.name)
+        val name:String = event.name
+        et_data.setText(name)
     }
 
     override fun onDestroy() {
