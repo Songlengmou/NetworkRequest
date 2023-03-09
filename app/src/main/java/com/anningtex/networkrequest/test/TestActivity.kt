@@ -5,9 +5,15 @@ import com.anningtex.networkrequest.R
 import com.anningtex.networkrequest.api.ApiConstants
 import com.anningtex.networkrequest.base.BaseView
 import com.anningtex.networkrequest.base.BaseActivity
+import com.anningtex.networkrequest.second.SecondActivity
 import com.anningtex.networkrequest.test.presenter.TestPresenter
+import com.anningtex.networkrequest.utils.MessageEvent
 import com.anningtex.networkrequest.utils.SPUtils
+import org.greenrobot.eventbus.EventBus
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
+import java.util.*
+import kotlin.concurrent.schedule
 
 class TestActivity : BaseActivity<BaseView, TestPresenter>(), BaseView {
     override fun setMainLayout(): Int {
@@ -33,6 +39,10 @@ class TestActivity : BaseActivity<BaseView, TestPresenter>(), BaseView {
 
     override fun onLoadContributorComplete(result: String) {
         Log.e("result", result)
+        startActivity<SecondActivity>()
+        Timer().schedule(3000) {
+            EventBus.getDefault().post(MessageEvent("跳转到second"))
+        }
     }
 
     override fun onNetWork() {

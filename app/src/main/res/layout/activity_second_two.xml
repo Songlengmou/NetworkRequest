@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".test.TestActivity">
+    tools:context=".second.SecondTwoActivity">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_date"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="日期"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

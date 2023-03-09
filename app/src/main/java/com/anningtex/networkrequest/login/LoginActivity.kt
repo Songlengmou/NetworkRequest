@@ -1,18 +1,18 @@
 package com.anningtex.networkrequest.login
 
-import android.content.Intent
 import android.util.Log
 import com.anningtex.networkrequest.R
 import com.anningtex.networkrequest.api.ApiConstants
+import com.anningtex.networkrequest.base.BaseActivity
+import com.anningtex.networkrequest.base.BaseView
 import com.anningtex.networkrequest.login.entity.LoginEntity
 import com.anningtex.networkrequest.login.presenter.LoginPresenter
-import com.anningtex.networkrequest.base.BaseView
-import com.anningtex.networkrequest.base.BaseActivity
 import com.anningtex.networkrequest.test.TestActivity
 import com.anningtex.networkrequest.utils.Md5Utils
 import com.anningtex.networkrequest.utils.SPUtils
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_login.*
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
 class LoginActivity : BaseActivity<BaseView, LoginPresenter>(), BaseView {
@@ -76,7 +76,7 @@ class LoginActivity : BaseActivity<BaseView, LoginPresenter>(), BaseView {
         }
         if (resultBean.code == 1) {
             resultBean.msg?.let { toast(it) }
-            startActivity(Intent(this, TestActivity::class.java))
+            startActivity<TestActivity>()
         } else {
             resultBean.msg?.let { toast(it) }
         }
