@@ -11,6 +11,6 @@ interface ApiService {
     fun getLogin(@FieldMap params: Map<String, String>): Observable<String>
 
     @FormUrlEncoded
-    @POST("api/v1/getRemainingGoods")
+    @POST("/api/v1/getRemainingGoods")
     fun getForeignRemaining(@FieldMap params: Map<String, String>): Observable<String>
 }
