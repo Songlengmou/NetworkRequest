@@ -1,5 +1,6 @@
 package com.anningtex.networkrequestlivedata.base
 
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,7 +13,7 @@ import com.anningtex.networkrequestlivedata.dialog.LoadingDialog
 
 abstract class BaseFragment<T : BaseViewModel> : Fragment(), IBaseView {
     lateinit var viewModel: T
-
+    private lateinit var loadingDialog: Dialog
     protected abstract fun initViewModel(): T
     protected abstract fun layoutId(): Int
     protected abstract fun initData(savedInstanceState: Bundle?)
@@ -22,20 +23,21 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment(), IBaseView {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         viewModel = initViewModel()
-        viewModel.apiLoading.observe(viewLifecycleOwner, Observer<Boolean> {
+        loadingDialog = initLoadingDialog()
+        viewModel.apiLoading.observe(viewLifecycleOwner, Observer {
             if (it == null) {
                 return@Observer
             }
             if (it) showLoading() else hideLoading()
         })
 
-        viewModel.toastLiveData.observe(viewLifecycleOwner, Observer<String> {
+        viewModel.toastLiveData.observe(viewLifecycleOwner) {
             it?.apply {
                 showToast(it)
             }
-        })
+        }
 
-        viewModel.apiException.observe(viewLifecycleOwner, Observer<Throwable> { throwable ->
+        viewModel.apiException.observe(viewLifecycleOwner, Observer { throwable ->
             if (throwable == null) {
                 return@Observer
             }
@@ -50,11 +52,8 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment(), IBaseView {
         return inflater.inflate(layoutId(), container, false)
     }
 
-    private fun initProgressDialog(): LoadingDialog {
-        val progressDialog = LoadingDialog(requireContext())
-        progressDialog.setCanceledOnTouchOutside(false)
-        progressDialog.setCancelable(false)
-        return progressDialog
+    private fun initLoadingDialog(): LoadingDialog {
+        return LoadingDialog(requireContext())
     }
 
     override fun showToast(message: String) {
@@ -69,12 +68,8 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment(), IBaseView {
         (activity as BaseActivity<*>).showLoading()
     }
 
-    override fun handleLogin() {
-        (activity as BaseActivity<*>).handleLogin()
-    }
-
     override fun handleException(throwable: Throwable): Boolean {
-        Log.e("BaseViewModel--> ", throwable?.toString() ?: "did not get detail exception")
+        throwable.toString().let { Log.e("BaseViewModel--> ", it) }
         return false
     }
 }

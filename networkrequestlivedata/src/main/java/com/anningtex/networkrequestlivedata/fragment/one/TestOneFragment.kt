@@ -9,7 +9,9 @@ import com.anningtex.networkrequestlivedata.base.BaseFragment
 import com.anningtex.networkrequestlivedata.converter.handler.Request
 import com.anningtex.networkrequestlivedata.converter.model.Result
 import com.anningtex.networkrequestlivedata.dialog.get
+import com.anningtex.networkrequestlivedata.fragment.one.adapter.TestOneAdapter
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_test_one.*
 
 class TestOneFragment : BaseFragment<TestOneModel>() {
 
@@ -39,13 +41,16 @@ class TestOneFragment : BaseFragment<TestOneModel>() {
                 is Result.Response -> {
                     hideLoading()
                     it.response.apply {
-//                        Log.e("onResponse-->", Gson().toJson(this))
+                        Log.e("onResponse-->", Gson().toJson(this))
                         if (code == 1) {
-                            showToast(msg)
+                            //adapter
+                            val testOneAdapter = TestOneAdapter()
+                            testOneAdapter.setData(data)
+                            rv_one.adapter = testOneAdapter
+
+                            //LogShow
                             for (testOneEntity in data) {
-                                Log.e("TAG", "bLNo: " + testOneEntity.bLNo)
                                 val containerList = testOneEntity.containerList
-//                            Log.e("TAG", "containerList: $containerList")
                                 for (container in containerList) {
                                     Log.e("TAG", "weightUnit: " + container.weightUnit)
                                 }

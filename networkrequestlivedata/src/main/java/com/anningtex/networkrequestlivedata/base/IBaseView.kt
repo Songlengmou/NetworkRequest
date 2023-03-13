@@ -7,7 +7,5 @@ interface IBaseView {
 
     fun showLoading()
 
-    fun handleLogin()
-
     fun handleException(throwable: Throwable): Boolean
 }

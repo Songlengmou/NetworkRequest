@@ -1,5 +1,6 @@
 package com.anningtex.networkrequestlivedata.login
 
+import android.Manifest
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -13,6 +14,7 @@ import com.anningtex.networkrequestlivedata.dialog.get
 import com.anningtex.networkrequestlivedata.second.SecondActivity
 import com.anningtex.networkrequestlivedata.utils.Md5Utils
 import com.google.gson.Gson
+import com.permissionx.saltedfish.PermissionX
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 
@@ -29,6 +31,31 @@ class LoginActivity : BaseActivity<LoginModel>(), View.OnClickListener {
 
     override fun layoutId(): Int {
         return R.layout.activity_login
+    }
+
+    override fun onStart() {
+        super.onStart()
+        permissionMgr()
+    }
+
+    private fun permissionMgr() {
+        PermissionX.requestPermissions(
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        ) { map, b ->
+            if (b) {
+                //权限全部授予执行的操作
+                showToast("You granted all permissions")
+            } else {
+                map.entries.forEach { entry ->
+                    if (!entry.value) {
+                        //未授予的权限执行的操作 这里弹出未授予的权限名
+                        showToast("You denied ${entry.key.substringAfterLast(".")} permission")
+                    }
+                }
+            }
+        }
     }
 
     override fun initPage(savedInstanceState: Bundle?) {
@@ -78,6 +105,7 @@ class LoginActivity : BaseActivity<LoginModel>(), View.OnClickListener {
                                     Log.e("TAG name: ", name)
                                 }
                                 startActivity<SecondActivity>()
+                                finish()
                             } else {
                                 showToast(msg)
                             }

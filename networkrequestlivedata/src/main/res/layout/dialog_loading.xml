@@ -19,6 +19,14 @@
             android:layout_height="65dp"
             android:layout_centerInParent="true"
             android:indeterminateDrawable="@drawable/progressbar" />
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
+            android:textColor="#9A9B98" />
     </RelativeLayout>
 
     <TextView

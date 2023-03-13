@@ -10,7 +10,7 @@ import com.anningtex.networkrequestlivedata.dialog.LoadingDialog
 
 abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), IBaseView {
     lateinit var viewModel: T
-    private lateinit var progressDialog: Dialog
+    private lateinit var loadingDialog: Dialog
 
     protected abstract fun initViewModel(): T
     protected abstract fun layoutId(): Int
@@ -21,21 +21,21 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), IBaseView 
         super.onCreate(savedInstanceState)
         setContentView(layoutId())
         viewModel = initViewModel()
-        progressDialog = initProgressDialog()
-        viewModel.apiLoading.observe(this, Observer<Boolean> {
+        loadingDialog = initLoadingDialog()
+        viewModel.apiLoading.observe(this, Observer {
             if (it == null) {
                 return@Observer
             }
             if (it) showLoading() else hideLoading()
         })
 
-        viewModel.toastLiveData.observe(this, Observer<String> {
+        viewModel.toastLiveData.observe(this) {
             it?.apply {
                 showToast(it)
             }
-        })
+        }
 
-        viewModel.apiException.observe(this, Observer<Throwable> { throwable ->
+        viewModel.apiException.observe(this, Observer { throwable ->
             if (throwable == null) {
                 return@Observer
             }
@@ -52,30 +52,23 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), IBaseView 
     }
 
     override fun hideLoading() {
-        if (progressDialog.isShowing) {
-            progressDialog.dismiss()
+        if (loadingDialog.isShowing) {
+            loadingDialog.dismiss()
         }
     }
 
     override fun showLoading() {
-        if (!progressDialog.isShowing) {
-            progressDialog.show()
+        if (!loadingDialog.isShowing) {
+            loadingDialog.show()
         }
     }
 
-    override fun handleLogin() {
-
-    }
-
     override fun handleException(throwable: Throwable): Boolean {
-        Log.e("BaseViewModel--> ", throwable.toString() ?: "did not get detail exception")
+        Log.e("BaseViewModel--> ", throwable.toString())
         return false
     }
 
-    private fun initProgressDialog(): LoadingDialog {
-        val progressDialog = LoadingDialog(this)
-        progressDialog.setCanceledOnTouchOutside(false)
-        progressDialog.setCancelable(false)
-        return progressDialog
+    private fun initLoadingDialog(): LoadingDialog {
+        return LoadingDialog(this)
     }
 }
