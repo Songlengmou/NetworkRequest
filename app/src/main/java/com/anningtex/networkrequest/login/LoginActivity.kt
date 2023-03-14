@@ -2,7 +2,7 @@ package com.anningtex.networkrequest.login
 
 import android.util.Log
 import com.anningtex.networkrequest.R
-import com.anningtex.networkrequest.api.ApiConstants
+import com.anningtex.networkrequest.api.ApiShowRequestData
 import com.anningtex.networkrequest.base.BaseActivity
 import com.anningtex.networkrequest.base.BaseView
 import com.anningtex.networkrequest.login.entity.LoginEntity
@@ -35,7 +35,7 @@ class LoginActivity : BaseActivity<BaseView, LoginPresenter>(), BaseView {
         btn_login.setOnClickListener {
             val Md5Utils = Md5Utils()
             val encodes = Md5Utils.encodes("1234567")
-            presenter!!.onRequest(ApiConstants.showRequestLoginData("panp2", encodes))
+            presenter!!.onRequest(ApiShowRequestData.showRequestLoginData("panp2", encodes))
         }
     }
 

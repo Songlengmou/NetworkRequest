@@ -2,7 +2,7 @@ package com.anningtex.networkrequest.test
 
 import android.util.Log
 import com.anningtex.networkrequest.R
-import com.anningtex.networkrequest.api.ApiConstants
+import com.anningtex.networkrequest.api.ApiShowRequestData
 import com.anningtex.networkrequest.base.BaseView
 import com.anningtex.networkrequest.base.BaseActivity
 import com.anningtex.networkrequest.second.SecondActivity
@@ -35,7 +35,7 @@ class TestActivity : BaseActivity<BaseView, TestPresenter>(), BaseView {
     }
 
     override fun initBeforeData() {
-        presenter!!.onRequest(ApiConstants.showRequestForeignRemainingData("2"))
+        presenter!!.onRequest(ApiShowRequestData.showRequestForeignRemainingData("2"))
     }
 
     override fun onLoadContributorStart() {
