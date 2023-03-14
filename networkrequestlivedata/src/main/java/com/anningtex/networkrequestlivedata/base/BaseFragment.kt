@@ -11,6 +11,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.anningtex.networkrequestlivedata.dialog.LoadingDialog
 
+/**
+ * @Author Song
+ */
 abstract class BaseFragment<T : BaseViewModel> : Fragment(), IBaseView {
     lateinit var viewModel: T
     private lateinit var loadingDialog: Dialog

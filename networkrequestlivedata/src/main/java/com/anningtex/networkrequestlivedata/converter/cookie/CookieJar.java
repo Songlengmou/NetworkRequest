@@ -26,7 +26,7 @@ import okhttp3.HttpUrl;
  * Set-Cookie报头包含于Web服务器的响应头（ResponseHeader）中
  * Cookie报头包含在浏览器客户端请求头（RequestHeader）中
  *
- * @author Administrator
+ * @author Song
  */
 public class CookieJar extends PersistentCookieJar {
     private static CookieJar instance;
@@ -44,8 +44,8 @@ public class CookieJar extends PersistentCookieJar {
         return instance;
     }
 
-    public CookieJar(CookieCache cache, CookiePersistor persistor) {
-        super(cache, persistor);
+    public CookieJar(CookieCache cache, CookiePersistor persist) {
+        super(cache, persist);
     }
 
     @Override

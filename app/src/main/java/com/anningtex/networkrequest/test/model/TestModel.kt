@@ -8,11 +8,9 @@ import rx.Subscriber
 
 /**
  * @Author Song
- * @Desc:
  * @Date：2023-03-08
  */
 class TestModel : BaseModel(), BaseModeListener {
-
     private var strApiService: ApiService = ApiManager.getInstance().strApiService
 
     override fun onRequest(

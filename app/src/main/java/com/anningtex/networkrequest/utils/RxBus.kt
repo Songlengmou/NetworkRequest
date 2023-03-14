@@ -6,6 +6,9 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.ReplaySubject
 
+/**
+ * @author Song
+ */
 object RxBus {
     private val TAG = javaClass.simpleName
 

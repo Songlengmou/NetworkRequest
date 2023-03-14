@@ -8,7 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * @author Administrator
+ * @author Song
  */
 public class OkLog {
     private static final String TAG = "OKHttp";
@@ -36,6 +36,7 @@ public class OkLog {
             message = msg;
         }
 
+        assert LINE_SEPARATOR != null;
         String[] lines = message.split(LINE_SEPARATOR);
         for (String line : lines) {
             Log.i(TAG, "║ " + line);
@@ -55,32 +56,27 @@ public class OkLog {
         final String top = "╔════════ %s ══════════════════════════════════";
         final String bot = "╚════════ %s ══════════════════════════════════";
         hint = TextUtils.isEmpty(hint) ? "════════" : hint;
-        String fotmated = String.format(isTop ? top : bot, hint);
-        Log.i(tag, fotmated);
+        String format = String.format(isTop ? top : bot, hint);
+        Log.i(tag, format);
     }
 
     private static String getStackTrace() {
         final int STACK_TRACE_INDEX_4 = 4;
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-
         StackTraceElement targetElement = stackTrace[STACK_TRACE_INDEX_4];
         String className = targetElement.getClassName();
         String[] classNameInfo = className.split("\\.");
         if (classNameInfo.length > 0) {
             className = classNameInfo[classNameInfo.length - 1] + SUFFIX;
         }
-
         if (className.contains("$")) {
             className = className.split("\\$")[0] + SUFFIX;
         }
-
         String methodName = targetElement.getMethodName();
         int lineNumber = targetElement.getLineNumber();
-
         if (lineNumber < 0) {
             lineNumber = 0;
         }
-
         return "[ (" + className + ":" + lineNumber + ")#" + methodName + " ] ";
     }
 }

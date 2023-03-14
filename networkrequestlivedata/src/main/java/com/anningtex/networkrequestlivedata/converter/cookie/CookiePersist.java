@@ -16,7 +16,7 @@ import java.util.Map;
 import okhttp3.Cookie;
 
 /**
- * @author Administrator
+ * @author Song
  */
 @SuppressLint("CommitPrefEdits")
 public class CookiePersist implements CookiePersistor {

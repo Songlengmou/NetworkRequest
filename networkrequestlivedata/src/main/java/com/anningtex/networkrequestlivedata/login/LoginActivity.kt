@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 
 /**
- * desc: login
+ * @Author Song
  */
 class LoginActivity : BaseActivity<LoginModel>(), View.OnClickListener {
     lateinit var userName: String

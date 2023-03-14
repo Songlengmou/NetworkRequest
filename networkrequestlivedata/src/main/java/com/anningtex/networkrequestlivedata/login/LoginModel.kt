@@ -13,7 +13,6 @@ import kotlinx.coroutines.SupervisorJob
 
 /**
  * @Author Song
- * @Desc:
  * @Date：2023-03-10
  */
 class LoginModel : BaseViewModel() {

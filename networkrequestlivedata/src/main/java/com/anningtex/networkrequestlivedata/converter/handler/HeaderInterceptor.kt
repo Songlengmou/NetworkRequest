@@ -3,6 +3,9 @@ package com.anningtex.networkrequestlivedata.converter.handler
 import okhttp3.Interceptor
 import okhttp3.Response
 
+/**
+ * @Author Song
+ */
 class HeaderInterceptor : Interceptor {
     private var headers = hashMapOf<String, String>()
 

@@ -5,6 +5,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * @Author Song
+ */
 class ViewModelDsl<Response> {
 
     internal lateinit var request: suspend () -> Response

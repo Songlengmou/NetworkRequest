@@ -11,6 +11,7 @@ import okhttp3.HttpUrl
  */
 class LocalCookieJar : CookieJar {
     var cookies: MutableList<Cookie> = arrayListOf()
+
     override fun loadForRequest(p0: HttpUrl): MutableList<Cookie> {
         return this.cookies
     }

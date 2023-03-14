@@ -12,7 +12,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * @author Administrator
+ * @author Song
  */
 public class ApiManager {
     /**
@@ -65,7 +65,6 @@ public class ApiManager {
                             addConverterFactory(GsonConverterFactory.create()).addCallAdapterFactory(RxJavaCallAdapterFactory.create()).build();
             jsonApiService = retrofit.create(ApiService.class);
         }
-
         return jsonApiService;
     }
 

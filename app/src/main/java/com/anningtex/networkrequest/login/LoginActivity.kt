@@ -15,6 +15,9 @@ import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.toast
 
+/**
+ * @author Song
+ */
 class LoginActivity : BaseActivity<BaseView, LoginPresenter>(), BaseView {
     override fun setMainLayout(): Int {
         return R.layout.activity_login
@@ -42,11 +45,11 @@ class LoginActivity : BaseActivity<BaseView, LoginPresenter>(), BaseView {
 
     var name: String? = null
 
-    override fun onLoadContributorComplete(data: String) {
-        Log.e("data", data)
+    override fun onLoadContributorComplete(result: String) {
+        Log.e("result", result)
 
         //json解析
-//        val entityTitle = JSON.parseObject(data, LoginEntity::class.java)
+//        val entityTitle = JSON.parseObject(result, LoginEntity::class.java)
 //        if (entityTitle.data != null) {
 //            Log.e("TAG", "data: " + entityTitle.data.toString())
 //            val menu = entityTitle.data?.menu
@@ -55,7 +58,7 @@ class LoginActivity : BaseActivity<BaseView, LoginPresenter>(), BaseView {
 
         //gson解析
 //{"code":1,"msg":"登录成功","data":{"role":"国外同事","menu":{"module":[{"name":"报表","id":41}],"urlList":[]},"IsSimplePWD":0,"token":"db73b8b30e661055d4c69f023bf4a777","IsHeader":"0","CountryID":"1","UserName":"PANP1"}}
-        val resultBean = Gson().fromJson(data, LoginEntity::class.java)
+        val resultBean = Gson().fromJson(result, LoginEntity::class.java)
         val data = resultBean.data
         val menu = data?.menu
         val module = menu?.module

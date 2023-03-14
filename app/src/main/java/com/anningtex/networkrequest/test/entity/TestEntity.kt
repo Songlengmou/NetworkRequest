@@ -2,7 +2,6 @@ package com.anningtex.networkrequest.test.entity
 
 /**
  * @Author Song
- * @Desc:
  * @Date：2023-03-09
  */
 data class TestEntity(

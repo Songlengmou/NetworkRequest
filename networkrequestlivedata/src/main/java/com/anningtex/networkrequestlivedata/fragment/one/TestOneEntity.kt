@@ -2,6 +2,9 @@ package com.anningtex.networkrequestlivedata.fragment.one
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * @Author Song
+ */
 data class TestOneEntity(
     @SerializedName("BLNo") val bLNo: String,
     @SerializedName("ContainerList") val containerList: List<Container>,

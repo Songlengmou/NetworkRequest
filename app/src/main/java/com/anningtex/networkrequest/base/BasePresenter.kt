@@ -2,8 +2,10 @@ package com.anningtex.networkrequest.base
 
 import java.lang.ref.WeakReference
 
+/**
+ * @author Song
+ */
 open class BasePresenter<T> {
-
     var weakReference: WeakReference<T>? = null
 
     fun attachView(t: T) {

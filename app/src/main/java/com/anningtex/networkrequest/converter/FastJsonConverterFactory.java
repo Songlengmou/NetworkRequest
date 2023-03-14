@@ -9,7 +9,7 @@ import retrofit2.Converter;
 import retrofit2.Retrofit;
 
 /**
- * @author Administrator
+ * @author Song
  */
 public class FastJsonConverterFactory extends Converter.Factory {
 

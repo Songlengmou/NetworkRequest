@@ -13,6 +13,9 @@ import com.anningtex.networkrequestlivedata.fragment.one.adapter.TestOneAdapter
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_test_one.*
 
+/**
+ * @Author Song
+ */
 class TestOneFragment : BaseFragment<TestOneModel>() {
 
     override fun initViewModel(): TestOneModel {

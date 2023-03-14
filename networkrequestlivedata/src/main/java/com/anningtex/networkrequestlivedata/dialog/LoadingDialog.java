@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.anningtex.networkrequestlivedata.R;
 
 /**
- * @author Administrator
+ * @author Song
  */
 public class LoadingDialog extends Dialog {
     private ProgressBar progressBar;

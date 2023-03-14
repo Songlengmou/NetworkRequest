@@ -5,6 +5,9 @@ import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 
+/**
+ * @Author Song
+ */
 fun <T : ViewModel> Fragment.get(clazz: Class<T>): T {
     return ViewModelProviders.of(this).get(clazz)
 }

@@ -13,7 +13,7 @@ import okio.Okio;
 import retrofit2.Converter;
 
 /**
- * @author Administrator
+ * @author Song
  */
 public class FastJsonResponseBodyConverter<T> implements Converter<ResponseBody, T> {
     private final Type type;

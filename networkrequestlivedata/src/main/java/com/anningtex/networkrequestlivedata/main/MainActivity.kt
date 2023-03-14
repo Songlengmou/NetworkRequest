@@ -9,14 +9,14 @@ import com.anningtex.networkrequestlivedata.base.BaseActivity
 import com.anningtex.networkrequestlivedata.converter.handler.Request
 import com.anningtex.networkrequestlivedata.converter.model.Result
 import com.google.gson.Gson
-import androidx.lifecycle.Observer
 import com.anningtex.networkrequestlivedata.dialog.get
 import com.anningtex.networkrequestlivedata.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
 /**
- *desc: 测试数据
+ * @Author Song
+ * desc: 测试数据
  */
 class MainActivity : BaseActivity<MainModel>(), OnClickListener {
 
@@ -51,7 +51,7 @@ class MainActivity : BaseActivity<MainModel>(), OnClickListener {
         when (v) {
             test -> viewModel.loadDSL()
             test2 -> viewModel.loadCallback()
-            test3 -> viewModel.loadLiveData().observe(this, Observer {
+            test3 -> viewModel.loadLiveData().observe(this) {
                 when (it) {
                     is Result.Error -> {
                         hideLoading()
@@ -74,7 +74,7 @@ class MainActivity : BaseActivity<MainModel>(), OnClickListener {
 
                     }
                 }
-            })
+            }
             test4 -> startActivity<LoginActivity>()
         }
         //2.
@@ -86,8 +86,8 @@ class MainActivity : BaseActivity<MainModel>(), OnClickListener {
     }
 
     override fun initLivedata(viewModel: MainModel) {
-        viewModel.liveData.observe(this, Observer {
+        viewModel.liveData.observe(this) {
             showToast(Gson().toJson(it))
-        })
+        }
     }
 }

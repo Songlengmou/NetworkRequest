@@ -9,10 +9,9 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
- * @author Administrator
+ * @author Song
  */
 public class BaseModel {
-
     private CompositeSubscription compositeSubscription;
 
     public void detachModel() {

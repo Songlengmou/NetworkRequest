@@ -1,5 +1,8 @@
 package com.anningtex.networkrequestlivedata.base
 
+/**
+ * @Author Song
+ */
 interface IBaseView {
     fun showToast(message: String)
 

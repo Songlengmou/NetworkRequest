@@ -2,7 +2,6 @@ package com.anningtex.networkrequest.base
 
 /**
  * @Author Song
- * @Desc:
  * @Date：2023-03-07
  */
 interface BaseView {

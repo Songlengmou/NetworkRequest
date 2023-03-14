@@ -1,7 +1,7 @@
 package com.anningtex.networkrequestlivedata.converter.handler;
 
-
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -32,7 +32,7 @@ import static okhttp3.internal.http.StatusLine.HTTP_CONTINUE;
 import com.anningtex.networkrequestlivedata.converter.tools.OkLog;
 
 /**
- * @author Administrator
+ * @author Song
  */
 public final class LoggingInterceptor implements Interceptor {
     private static final Charset UTF8 = StandardCharsets.UTF_8;
@@ -51,6 +51,7 @@ public final class LoggingInterceptor implements Interceptor {
         OkLog.log("Method-->" + request.method());
         OkLog.log("URL-->" + request.url());
         OkLog.log("Protocol-->" + protocol);
+        Log.e("URL-->", String.valueOf(request.url()));
 
         if (hasRequestBody) {
             if (requestBody.contentType() != null) {
@@ -64,12 +65,12 @@ public final class LoggingInterceptor implements Interceptor {
                 if (request.body() instanceof FormBody) {
                     FormBody body = (FormBody) request.body();
                     for (int i = 0; i < Objects.requireNonNull(body).size(); i++) {
-                        sb.append(body.encodedName(i) + "=" + body.encodedValue(i) + ",");
+                        sb.append(body.encodedName(i)).append(" = ").append(body.encodedValue(i)).append(" , ");
                     }
                     OkLog.log("RequestBody :{" + sb + "}");
+                    Log.e("RequestBody-->", "{" + sb + "}");
                 }
             }
-
         }
 
         Headers requestHeaders = request.headers();
@@ -134,7 +135,7 @@ public final class LoggingInterceptor implements Interceptor {
             Charset charset = UTF8;
             MediaType contentType = responseBody.contentType();
             if (contentType != null) {
-                OkLog.log("ContentType-->" + contentType.toString());
+                OkLog.log("ContentType-->" + contentType);
                 try {
                     charset = contentType.charset(UTF8);
                 } catch (UnsupportedCharsetException e) {

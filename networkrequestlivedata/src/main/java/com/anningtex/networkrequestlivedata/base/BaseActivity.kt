@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.anningtex.networkrequestlivedata.dialog.LoadingDialog
 
+/**
+ * @Author Song
+ */
 abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(), IBaseView {
     lateinit var viewModel: T
     private lateinit var loadingDialog: Dialog

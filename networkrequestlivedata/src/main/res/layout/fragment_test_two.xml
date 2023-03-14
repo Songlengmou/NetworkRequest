@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".fragment.two.TestTwoFragment">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="hello_two_fragment" />
+        android:text="hello_two_fragment"
+        tools:ignore="HardcodedText" />
 
 </FrameLayout>

@@ -6,6 +6,9 @@ import android.os.Bundle
 import com.anningtex.networkrequest.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
+/**
+ * @author Song
+ */
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

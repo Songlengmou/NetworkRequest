@@ -8,6 +8,9 @@ import com.anningtex.networkrequest.utils.RxBus
 import com.anningtex.networkrequest.utils.registerInBus
 import kotlinx.android.synthetic.main.activity_second_two.*
 
+/**
+ * @author Song
+ */
 class SecondTwoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

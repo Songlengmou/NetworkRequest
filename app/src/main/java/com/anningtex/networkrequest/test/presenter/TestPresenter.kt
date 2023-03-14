@@ -8,7 +8,6 @@ import com.anningtex.networkrequest.test.model.TestModel
 
 /**
  * @Author Song
- * @Desc:
  * @Date：2023-03-08
  */
 class TestPresenter : BasePresenter<BaseView>() {
@@ -28,16 +27,17 @@ class TestPresenter : BasePresenter<BaseView>() {
             }
             //初始化
             iView.onLoadContributorStart()
-            model!!.onRequest(ApiConstants.baseUrl, map, object : BaseModeListener.CallBackListener {
+            model!!.onRequest(ApiConstants.baseUrl,
+                map,
+                object : BaseModeListener.CallBackListener {
+                    override fun onDataCallBackListener(result: String) {
+                        iView.onLoadContributorComplete(result)
+                    }
 
-                override fun onDataCallBackListener(result: String) {
-                    iView.onLoadContributorComplete(result)
-                }
-
-                override fun onError(error: String) {
-                    iView.onError(error)
-                }
-            })
+                    override fun onError(error: String) {
+                        iView.onError(error)
+                    }
+                })
         }
     }
 

@@ -3,6 +3,9 @@ package com.anningtex.networkrequestlivedata.base
 import androidx.lifecycle.MutableLiveData
 import com.anningtex.networkrequestlivedata.converter.model.RequestViewModel
 
+/**
+ * @Author Song
+ */
 open class BaseViewModel : RequestViewModel() {
     internal val toastLiveData = MutableLiveData<String>()
 

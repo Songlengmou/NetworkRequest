@@ -17,6 +17,9 @@ import org.jetbrains.anko.toast
 import java.util.*
 import kotlin.concurrent.schedule
 
+/**
+ * @author Song
+ */
 class TestActivity : BaseActivity<BaseView, TestPresenter>(), BaseView {
     override fun setMainLayout(): Int {
         return R.layout.activity_test
@@ -55,7 +58,6 @@ class TestActivity : BaseActivity<BaseView, TestPresenter>(), BaseView {
 //                Log.e("TAG toCountryName", toCountryName)
                 }
             }
-
             startActivity<SecondActivity>()
             Timer().schedule(3000) {
                 EventBus.getDefault().post(MessageEvent("跳转了"))

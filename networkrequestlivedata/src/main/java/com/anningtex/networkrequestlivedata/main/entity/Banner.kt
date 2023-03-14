@@ -2,7 +2,6 @@ package com.anningtex.networkrequestlivedata.main.entity
 
 /**
  * @Author Song
- * @Desc:
  * @Date：2023-03-11
  */
 data class Banner(

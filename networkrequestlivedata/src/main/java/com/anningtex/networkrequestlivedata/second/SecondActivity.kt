@@ -8,6 +8,9 @@ import com.anningtex.networkrequestlivedata.fragment.one.TestOneFragment
 import com.anningtex.networkrequestlivedata.fragment.two.TestTwoFragment
 import kotlinx.android.synthetic.main.activity_second.*
 
+/**
+ * @Author Song
+ */
 class SecondActivity : BaseActivity<SecondModel>() {
 
     override fun initViewModel(): SecondModel {

@@ -5,6 +5,9 @@ import com.anningtex.networkrequestlivedata.R
 import com.anningtex.networkrequestlivedata.base.BaseFragment
 import com.anningtex.networkrequestlivedata.dialog.get
 
+/**
+ * @Author Song
+ */
 class TestTwoFragment : BaseFragment<TestTwoModel>() {
 
     override fun initViewModel(): TestTwoModel {

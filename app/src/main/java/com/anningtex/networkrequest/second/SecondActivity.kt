@@ -14,6 +14,9 @@ import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
 import org.jetbrains.anko.startActivity
 
+/**
+ * @author Song
+ */
 class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +35,7 @@ class SecondActivity : AppCompatActivity() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: MessageEvent) {
         Log.e("TAG", "onMessageEvent: " + event.name)
-        val name:String = event.name
+        val name: String = event.name
         et_data.setText(name)
     }
 

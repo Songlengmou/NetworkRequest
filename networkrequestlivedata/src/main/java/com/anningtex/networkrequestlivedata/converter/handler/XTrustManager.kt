@@ -3,6 +3,9 @@ package com.anningtex.networkrequestlivedata.converter.handler
 import java.security.cert.X509Certificate
 import javax.net.ssl.X509TrustManager
 
+/**
+ * @Author Song
+ */
 class XTrustManager : X509TrustManager {
 
     override fun checkClientTrusted(chain: Array<out X509Certificate>?, authType: String?) {

@@ -3,8 +3,10 @@ package com.anningtex.networkrequest.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 
+/**
+ * @Author Song
+ */
 abstract class BaseActivity<V, T : BasePresenter<V>> : AppCompatActivity() {
-
     var presenter: T? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

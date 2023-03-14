@@ -1,5 +1,6 @@
 package com.anningtex.networkrequest.login.presenter
 
+import android.util.Log
 import com.anningtex.networkrequest.api.ApiConstants
 import com.anningtex.networkrequest.base.BaseModeListener
 import com.anningtex.networkrequest.login.model.LoginModel
@@ -8,7 +9,6 @@ import com.anningtex.networkrequest.base.BasePresenter
 
 /**
  * @Author Song
- * @Desc:
  * @Date：2023-03-07
  */
 class LoginPresenter : BasePresenter<BaseView>() {
@@ -19,6 +19,7 @@ class LoginPresenter : BasePresenter<BaseView>() {
     }
 
     fun onRequest(map: Map<String, String>) {
+        Log.e("TAG", "onRequest: $map")
         val iView = getView()
         if (model != null && iView != null) {
             //验证网络  无网络不加载
@@ -28,16 +29,17 @@ class LoginPresenter : BasePresenter<BaseView>() {
             }
             //初始化
             iView.onLoadContributorStart()
-            model!!.onRequest(ApiConstants.baseUrl, map, object : BaseModeListener.CallBackListener {
+            model!!.onRequest(ApiConstants.baseUrl,
+                map,
+                object : BaseModeListener.CallBackListener {
+                    override fun onDataCallBackListener(result: String) {
+                        iView.onLoadContributorComplete(result)
+                    }
 
-                override fun onDataCallBackListener(result: String) {
-                    iView.onLoadContributorComplete(result)
-                }
-
-                override fun onError(error: String) {
-                    iView.onError(error)
-                }
-            })
+                    override fun onError(error: String) {
+                        iView.onError(error)
+                    }
+                })
         }
     }
 

@@ -9,9 +9,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.security.SecureRandom
 import java.util.concurrent.TimeUnit
-import javax.net.ssl.HostnameVerifier
 import javax.net.ssl.SSLContext
 
+/**
+ * @Author Song
+ */
 object Request {
     internal lateinit var appContext: Context
 
@@ -46,9 +48,9 @@ object Request {
                 )
                 val sslSocketFactory = sslContext.socketFactory
                 builder.sslSocketFactory(sslSocketFactory, XTrustManager())
-                builder.hostnameVerifier(HostnameVerifier { hostname, session ->
+                builder.hostnameVerifier { hostname, session ->
                     true
-                })
+                }
                 builder.addNetworkInterceptor(LoggingInterceptor())
             } catch (e: Exception) {
                 throw RuntimeException(e)
@@ -68,12 +70,12 @@ object Request {
         requestDSL: (RequestDsl.() -> Unit)? = null
     ) {
         val dsl = if (requestDSL != null) RequestDsl().apply(requestDSL) else null
-        val finalOkHttpBuilder = dsl?.buidOkHttp?.invoke(okHttpBuilder) ?: okHttpBuilder
+        val finalOkHttpBuilder = dsl?.buildOkHttp?.invoke(okHttpBuilder) ?: okHttpBuilder
         val retrofitBuilder = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .client(finalOkHttpBuilder.build())
-        val finalRetrofitBuilder = dsl?.buidRetrofit?.invoke(retrofitBuilder) ?: retrofitBuilder
+        val finalRetrofitBuilder = dsl?.buildRetrofit?.invoke(retrofitBuilder) ?: retrofitBuilder
         retrofit = finalRetrofitBuilder.build()
     }
 
@@ -83,7 +85,7 @@ object Request {
 
     fun resetBaseUrl(newValue: String): Boolean {
         val isOK =
-            !newValue.isBlank() && (baseUrl.startsWith("http://") || baseUrl.startsWith("https://"))
+            newValue.isNotBlank() && (baseUrl.startsWith("http://") || baseUrl.startsWith("https://"))
         check(isOK) { "baseUrl is illegal: $baseUrl" }
         val isChanged = isOK && baseUrl != newValue
         if (isChanged) {
@@ -99,15 +101,15 @@ object Request {
 }
 
 class RequestDsl {
-    internal var buidOkHttp: ((OkHttpClient.Builder) -> OkHttpClient.Builder)? = null
+    internal var buildOkHttp: ((OkHttpClient.Builder) -> OkHttpClient.Builder)? = null
 
-    internal var buidRetrofit: ((Retrofit.Builder) -> Retrofit.Builder)? = null
+    internal var buildRetrofit: ((Retrofit.Builder) -> Retrofit.Builder)? = null
 
     infix fun okHttp(builder: ((OkHttpClient.Builder) -> OkHttpClient.Builder)?) {
-        this.buidOkHttp = builder
+        this.buildOkHttp = builder
     }
 
     infix fun retrofit(builder: ((Retrofit.Builder) -> Retrofit.Builder)?) {
-        this.buidRetrofit = builder
+        this.buildRetrofit = builder
     }
 }
