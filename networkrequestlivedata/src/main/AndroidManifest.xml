@@ -19,6 +19,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NetworkRequest">
         <activity
+            android:name=".three.ThreeActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".second.SecondActivity"
             android:exported="false">
             <meta-data

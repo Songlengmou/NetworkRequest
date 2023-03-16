@@ -19,7 +19,8 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment(), IBaseView {
     private lateinit var loadingDialog: Dialog
     protected abstract fun initViewModel(): T
     protected abstract fun layoutId(): Int
-    protected abstract fun initData(savedInstanceState: Bundle?)
+    protected abstract fun initLayoutInflaterView(inflater: View)
+    protected abstract fun initDataConfig(savedInstanceState: Bundle?)
     protected abstract fun initLivedata(viewModel: T)
 
     override fun onCreateView(
@@ -49,10 +50,12 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment(), IBaseView {
             }
         })
 
-        initData(savedInstanceState)
+        initDataConfig(savedInstanceState)
         initLivedata(viewModel)
+        val view = inflater.inflate(layoutId(), container, false)
+        initLayoutInflaterView(view)
 
-        return inflater.inflate(layoutId(), container, false)
+        return view
     }
 
     private fun initLoadingDialog(): LoadingDialog {

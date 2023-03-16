@@ -11,6 +11,7 @@ import com.anningtex.networkrequestlivedata.converter.model.Result
 import com.google.gson.Gson
 import com.anningtex.networkrequestlivedata.dialog.get
 import com.anningtex.networkrequestlivedata.login.LoginActivity
+import com.anningtex.networkrequestlivedata.three.ThreeActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 
@@ -44,6 +45,7 @@ class MainActivity : BaseActivity<MainModel>(), OnClickListener {
         test2.setOnClickListener(this)
         test3.setOnClickListener(this)
         test4.setOnClickListener(this)
+        test5.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -76,6 +78,7 @@ class MainActivity : BaseActivity<MainModel>(), OnClickListener {
                 }
             }
             test4 -> startActivity<LoginActivity>()
+            test5 -> startActivity<ThreeActivity>()
         }
         //2.
 //        when(v!!.id){

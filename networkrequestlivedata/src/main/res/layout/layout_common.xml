@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spChoose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:padding="5dp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etSelect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spChoose"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:background="@android:color/transparent"
+        android:clickable="false"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="COUNTRIES"
+        android:padding="@dimen/dp_10"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        tools:ignore="HardcodedText" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnTest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etSelect"
+        android:layout_margin="@dimen/dp_10"
+        android:text="点击"
+        tools:ignore="HardcodedText" />
+</RelativeLayout>

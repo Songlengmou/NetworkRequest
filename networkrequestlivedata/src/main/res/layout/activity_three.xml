@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><!--2.-->
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".three.ThreeActivity">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/tab_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        app:selectionRequired="true"
+        tools:ignore="ObsoleteLayoutParam">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tab_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/purple_200"
+            android:text="One"
+            android:textColor="@color/white"
+            app:icon="@mipmap/icon_manager_grid"
+            app:iconGravity="textTop"
+            app:iconTint="@color/white"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tab_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@color/purple_200"
+            android:text="Two"
+            android:textColor="@color/white"
+            app:icon="@mipmap/icon_manager_linear"
+            app:iconGravity="textTop"
+            app:iconTint="@color/white"
+            tools:ignore="HardcodedText" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+    <!--1.第一种-->
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    tools:context=".three.ThreeActivity">-->
+
+    <!--    <RadioGroup-->
+    <!--        android:id="@+id/rg"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="60dp"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:orientation="horizontal">-->
+
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/rb1"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:background="#f0f"-->
+    <!--            android:button="@null"-->
+    <!--            android:checked="true"-->
+    <!--            android:drawablePadding="5dp"-->
+    <!--            android:gravity="center"-->
+    <!--            android:padding="2dp"-->
+    <!--            android:text="one"-->
+    <!--            android:textSize="15sp"-->
+    <!--            tools:ignore="HardcodedText" />-->
+
+    <!--        <RadioButton-->
+    <!--            android:id="@+id/rb2"-->
+    <!--            android:layout_width="0dp"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:background="#ff0"-->
+    <!--            android:button="@null"-->
+    <!--            android:drawablePadding="5dp"-->
+    <!--            android:gravity="center"-->
+    <!--            android:padding="2dp"-->
+    <!--            android:text="two"-->
+    <!--            android:textSize="15sp"-->
+    <!--            tools:ignore="HardcodedText" />-->
+
+    <!--    </RadioGroup>-->
+
+    <!--    <View-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="1dp"-->
+    <!--        android:layout_below="@+id/main_frame_layout"-->
+    <!--        android:background="#EEEEEE" />-->
+
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/main_frame_layout"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_above="@id/rg" />-->
+    <!--</RelativeLayout>-->

@@ -2,6 +2,7 @@ package com.anningtex.networkrequestlivedata.fragment.one
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.Observer
 import com.anningtex.networkrequestlivedata.R
 import com.anningtex.networkrequestlivedata.api.ApiConstants
@@ -26,7 +27,11 @@ class TestOneFragment : BaseFragment<TestOneModel>() {
         return R.layout.fragment_test_one
     }
 
-    override fun initData(savedInstanceState: Bundle?) {
+    override fun initLayoutInflaterView(inflater: View) {
+
+    }
+
+    override fun initDataConfig(savedInstanceState: Bundle?) {
         Request.init(requireContext(), ApiConstants.baseUrl) {
             okHttp {
                 it
